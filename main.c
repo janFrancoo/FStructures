@@ -234,6 +234,7 @@ int main()
     printGraph(graph);
 
     dijkstraShortestPath(graph, 0);
+    */
 
     // MATRIX
     Matrix *m1;
@@ -297,7 +298,10 @@ int main()
     Matrix *inverse;
     getInverse(m, &inverse);
     printMatrix(inverse);
-    */
+
+    Matrix *T;
+    get3DTranslationMatrix(5, 5, 1, &T);
+    printMatrix(T);
 
     return 0;
 }

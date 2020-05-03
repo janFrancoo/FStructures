@@ -3,6 +3,10 @@
 
 #include <string.h>
 
+#define AXIS_X  0
+#define AXIS_Y  1
+#define AXIS_Z  2
+
 #define TRUE    1
 #define FALSE   0
 typedef int bool;
@@ -295,12 +299,78 @@ void getInverse(Matrix *matrix, Matrix **inverse) {
     matrixDiv(mAdj, mDet, inverse);
 }
 
-void rotateMatrix() {
-    //.........
+void get3DTranslationMatrix (int Tx, int Ty, int Tz, Matrix **result) {
+    zeroMatrix(result, 4, 4);
+    if ((*result) == NULL)
+        return;
+
+    ((int*)(*result)->data[0])[0] = 1;
+    ((int*)(*result)->data[1])[1] = 1;
+    ((int*)(*result)->data[2])[2] = 1;
+    ((int*)(*result)->data[3])[3] = 1;
+
+    ((int*)(*result)->data[0])[3] = Tx;
+    ((int*)(*result)->data[1])[3] = Ty;
+    ((int*)(*result)->data[2])[3] = Tz;
 }
 
-void translate() {
-    // ........
+void translate3D(Matrix *m, int x, int y, int z, Matrix **result) {
+    Matrix *translationMatrix;
+    get3DTranslationMatrix(x, y, z, &translationMatrix);
+    if (translationMatrix == NULL)
+        return;
+
+    matrixMultiplication(m, translationMatrix, result);
+}
+
+// angle 0 -> [1 0 0]
+// angle 90 -> [0 1 0] ...
+// angle dir is anticlockwise!!!!!!!
+void get3DRotationMatrix(int angle, int axis, Matrix **result) {
+    if (axis != AXIS_X && axis != AXIS_Y && axis != AXIS_Z)
+        return;
+
+    if (angle > 360 || angle < 0)
+        return;
+
+    zeroMatrix(result, 4, 4);
+    if ((*result) == NULL)
+        return;
+
+    ((int*)(*result)->data[0])[0] = 1;
+    ((int*)(*result)->data[1])[1] = 1;
+    ((int*)(*result)->data[2])[2] = 1;
+    ((int*)(*result)->data[3])[3] = 1;
+
+    switch (axis) {
+        case AXIS_X:
+            ((int*)(*result)->data[1])[1] = sin(angle) * -1;
+            ((int*)(*result)->data[1])[2] = cos(angle);
+            ((int*)(*result)->data[2])[1] = cos(angle);
+            ((int*)(*result)->data[2])[1] = sin(angle);
+            break;
+        case AXIS_Y:
+            ((int*)(*result)->data[0])[0] = sin(angle);
+            ((int*)(*result)->data[0])[2] = cos(angle);
+            ((int*)(*result)->data[2])[0] = cos(angle);
+            ((int*)(*result)->data[2])[2] = sin(angle) * -1;
+            break;
+        case AXIS_Z:
+            ((int*)(*result)->data[0])[0] = sin(angle);
+            ((int*)(*result)->data[0])[1] = cos(angle) * -1;
+            ((int*)(*result)->data[1])[0] = cos(angle);
+            ((int*)(*result)->data[1])[1] = sin(angle);
+            break;
+    }
+}
+
+void rotate3D (Matrix *matrix, int angle, int axisAround, Matrix **result) {
+    Matrix *rotateMatrix;
+    get3DRotationMatrix(angle, axisAround, &rotateMatrix);
+    if (rotateMatrix == NULL)
+        return;
+
+    matrixMultiplication(matrix, rotateMatrix, result);
 }
 
 void printMatrix(Matrix *matrix) {
