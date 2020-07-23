@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1595521616 source:c:\users\pc\codeblocksprojects\fstructures\main.c
+1595531879 source:c:\users\pc\codeblocksprojects\fstructures\main.c
 	<stdio.h>
 	<stdlib.h>
 	"trie.h"
@@ -22,10 +22,11 @@
 1588505225 c:\users\pc\codeblocksprojects\fstructures\binary_tree.h
 	"helper.h"
 
-1588504981 c:\users\pc\codeblocksprojects\fstructures\helper.h
+1595532103 c:\users\pc\codeblocksprojects\fstructures\helper.h
 
 1588506859 c:\users\pc\codeblocksprojects\fstructures\avl_tree.h
 	"helper.h"
 
-1595521851 c:\users\pc\codeblocksprojects\fstructures\trie.h
+1595532115 c:\users\pc\codeblocksprojects\fstructures\trie.h
+	"helper.h"
 

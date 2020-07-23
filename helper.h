@@ -45,9 +45,7 @@ void selectionSort(int arr[], int n) {
     }
 }
 
-// CAN BE APPLIED A BETTER SOLUTION USING SIEVE METHOD!!!
-// CAN BE APPLIED A BETTER SOLUTION USING SIEVE METHOD!!!
-// CAN BE APPLIED A BETTER SOLUTION USING SIEVE METHOD!!!
+// CAN BE APPLIED A BETTER SOLUTION USING SIEVE METHOD
 int generatePrimes(int n) {
     int j, prime;
     for (int i=2; i<n; i++) {
@@ -59,6 +57,13 @@ int generatePrimes(int n) {
             prime = i;
     }
     return prime;
+}
+
+int stringLength(char *word) {
+    int count = 0;
+    while (word[count] != '\0')
+        count++;
+    return count;
 }
 
 #endif // HELPER_H_INCLUDED

@@ -1,6 +1,8 @@
 #ifndef TRIE_H_INCLUDED
 #define TRIE_H_INCLUDED
 
+#include "helper.h"
+
 #define ALPHABET_LEN 26
 
 #define TRUE    1
@@ -20,13 +22,6 @@ Node *getNode() {
         node->child[i] = NULL;
 
     return node;
-}
-
-int stringLength(char *word) {
-    int count = 0;
-    while (word[count] != '\0')
-        count++;
-    return count;
 }
 
 int indexOfChar(char c) {
@@ -78,8 +73,8 @@ void getSuggestions(Node *node, char *word) {
 
     for (int i=0; i<stringLength(word); i++) {
         int idx = indexOfChar(word[i]);
-        if (t->child[idx] == NULL)
-            break;
+        if (idx > ALPHABET_LEN || t->child[idx] == NULL)
+            return;
         t = t->child[idx];
     }
 
