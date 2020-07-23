@@ -1,16 +1,8 @@
 # depslib dependency file v1.0
-1588506841 source:c:\users\pc\codeblocksprojects\fstructures\main.c
+1595521616 source:c:\users\pc\codeblocksprojects\fstructures\main.c
 	<stdio.h>
 	<stdlib.h>
-	"stack.h"
-	"queue.h"
-	"circular_queue.h"
-	"priority_queue.h"
-	"linked_list.h"
-	"doubly_linked_list.h"
-	"circular_linked_list.h"
-	"binary_tree.h"
-	"avl_tree.h"
+	"trie.h"
 
 1588500778 c:\users\pc\codeblocksprojects\fstructures\stack.h
 
@@ -34,4 +26,6 @@
 
 1588506859 c:\users\pc\codeblocksprojects\fstructures\avl_tree.h
 	"helper.h"
+
+1595521851 c:\users\pc\codeblocksprojects\fstructures\trie.h
 

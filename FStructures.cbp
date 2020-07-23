@@ -85,6 +85,9 @@
 		<Unit filename="stack.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="trie.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />
